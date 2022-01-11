@@ -1,0 +1,46 @@
+syntax = "proto3";
+package com.service.calculator;
+option java_multiple_files = true;
+
+message AddRequest {
+  int32 first = 1;
+  repeated int32 rest = 2;
+}
+
+message AddResponse {
+  int64 result = 1;
+}
+
+message PrimeFactorRequest {
+  int64 number = 1;
+}
+
+message PrimeFactorResponse {
+  int64 factor = 1;
+}
+
+message AverageRequest {
+  int32 number = 1;
+}
+
+message AverageResponse {
+  double average = 1;
+}
+
+message MaxRequest {
+  int32 value = 1;
+}
+
+message MaxResponse {
+  int32 value = 1;
+}
+
+message empty {
+}
+
+service CalculatorService {
+  rpc add(AddRequest) returns (AddResponse) {};
+  rpc primeFactor(PrimeFactorRequest) returns (stream PrimeFactorResponse) {};
+  rpc average(stream AverageRequest) returns (AverageResponse) {};
+  rpc max(stream MaxRequest) returns (stream MaxResponse) {};
+}

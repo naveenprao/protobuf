@@ -1,0 +1,9 @@
+syntax = "proto3";
+package example.service;
+
+option java_package = "com.example.service";
+option java_multiple_files = true;
+
+message DummyMessage{}
+
+service DummyService{}
